@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
+                <a href="/add_student" ><button class="btn btn-primary right">Add Student</button></a>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -31,7 +31,7 @@
                                 <td>{{$student->id}}</td>
                                 <td>{{$student->full_name}}</td>
                                 <td>{{$student->level}}</td>
-                                <td><a href="/contest_pre/{{ $student->id}}"><button type="button" class="btn btn-primary">Contest President</button></a></td>
+                                <td><a href="/show_student/{{ $student->id}}"><button type="button" class="btn btn-primary">Student Details</button></a></td>
                         </tr>
                          @endforeach
                     </tbody>

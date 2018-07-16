@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVicePresidentsTable extends Migration
+class CreateSecGensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateVicePresidentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vice_presidents', function (Blueprint $table) {
+        Schema::create('sec_gens', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('students_id')->refrences('id')->on('students');
+            $table->integer('students_id')->references('id')->on('students');
             $table->string('position');
             $table->integer('vote_count');
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateVicePresidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vice_presidents');
+        Schema::dropIfExists('sec_gens');
     }
 }

@@ -14,7 +14,7 @@
        <div class="jumbotron">
  	 <h1>Welcome To Instant Voting, Instant Collection Platform</h1>
   
-    <p><a href="welcome/login"><button class="btn btn-primary btn-lg">Click Here to Login And Start Voting</button></a></p>       
+    <p><a href="/student_login"><button class="btn btn-primary btn-lg">Click Here to Login And Start Voting</button></a></p>       
 	</div>
       </div>
 

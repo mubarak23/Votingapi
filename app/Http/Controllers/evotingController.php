@@ -22,10 +22,14 @@ class evotingController extends Controller
     	return view('evoting.login');
     }
 
+
+
     public function view_opt(){
     	return view('evoting.submitopt');
 
     }
+
+
 
     public function verified_login(Request $request){
     		//return "Good Here";
@@ -41,6 +45,8 @@ class evotingController extends Controller
     	$reg_number = $data['reg_number'];
 
     	$verified_login = Student::where('programme', $programme)->where('reg_no', $reg_number)->get();
+        
+            
 
 
 
@@ -48,19 +54,31 @@ class evotingController extends Controller
 
 
     	if($verified_login){
-    		return $verified_login;
+
+    		return view('evoting.submitopt' );
 
     	}else{
 
     	return 'Failed Login';
 	
     	}
+
+
     	return response::json(array(
     				'status' => true,
     				'message' => 'Student Successfully Verified',
     				'data'		=> $verified_login
     			), 200);
 
+
+    }
+
+    public function process_otp(Request $request){
+
+            $data = $request->all();
+
+            //check if the submitted opt has been used
+            //$check = verifiedotp::find('')
 
     }
 

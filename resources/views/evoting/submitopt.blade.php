@@ -11,6 +11,11 @@
             
 			 	</div>
 			  	<div class="panel-body">
+			  		@if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 			    	<form accept-charset="UTF-8" role="form" method="post" action="Autharization/verify_otp">
                     <fieldset>
 			    	  	<div class="form-group">

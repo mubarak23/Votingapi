@@ -22,14 +22,14 @@ class VicePresidentController extends Controller
 
     	$contest = new Vice_president();
 
-    	$contest->student_id = $data['id'];
+    	$contest->students_id = $data['id'];
     	$contest->position = 'Vice President';
     	$contest->vote_count = 0;
 
     	$contest->save();
 
-    	return redirect()->route('home')->witn('status', 'Vice President Contestant Added');
-    	
+    	return redirect()->route('home')->with('status', 'Contestant Added');
+
 
     }
 }
