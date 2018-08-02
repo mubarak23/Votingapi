@@ -45,9 +45,6 @@ class evotingController extends Controller
     	$reg_number = $data['reg_number'];
 
     	$verified_login = Student::where('programme', $programme)->where('reg_no', $reg_number)->get();
-        
-            
-
 
 
     	/*$verified_login = DB::table('students')->select('id', 'reg_no')->where('programme', $programme)->where('reg_no', $reg_number);*/
