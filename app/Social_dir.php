@@ -12,4 +12,11 @@ class Social_dir extends Model
 
     	return $this->belongsTo('App\Social_dir');
     }
+
+
+      public function Student_vote(){
+
+    	return $this->belongsTo('App\Student_vote');
+
+    }
 }

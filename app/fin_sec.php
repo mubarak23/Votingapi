@@ -12,4 +12,12 @@ class fin_sec extends Model
     	
     		return $this->belongsTo('App\fin_sec');
     }
+
+      public function Student_vote(){
+
+    	return $this->belongsTo('App\Student_vote');
+
+    }
+
+    
 }

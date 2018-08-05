@@ -14,4 +14,16 @@ class President extends Model
     		return $this->belongsTo('App\Student');
 
     }
+
+
+   public function Student_vote(){
+
+    	return $this->belongsTo('App\Student_vote');
+
+    }
+
+
+    
+
+
 }

@@ -71,6 +71,12 @@ class student extends Model
 
     }
 
+    public function Student_vote(){
+        
+        return $this->hasMany('App\Student_vote', 'students_id', 'id');
+
+    }
+
 
 
 }

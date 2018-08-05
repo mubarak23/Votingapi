@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePresidentsTable extends Migration
+class CreateStudentVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePresidentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('presidents', function (Blueprint $table) {
+        Schema::create('student_votes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('students_id')->refrences('id')->on('students');
-            $table->string('full_name')->refrences('ful_name')->on('students');
+            $table->integer('students_id')->references('id')->on('students');
+            $table->integer('candidate_id');
+            $table->string('candidate_name');
             $table->string('position');
-            $table->integer('vote_count');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePresidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presidents');
+        Schema::dropIfExists('student_votes');
     }
 }

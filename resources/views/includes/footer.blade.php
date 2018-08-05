@@ -2,7 +2,7 @@
       <footer>
         <div class="container">
           <p class="pull-right"><a href="#">Back to Top</a></p>
-          <p>IVIC Platform &copy; 2017. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms And Condition</a></p>    
+          <p>IVIC Platform &copy; 2018 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms And Condition</a></p>    
         </div>
       
       

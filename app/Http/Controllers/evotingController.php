@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\checkotp;
 use App\verifiedotp;
 use App\Student;
+use App\President;
 use Validator, Response, DB;
 
 
@@ -76,6 +77,29 @@ class evotingController extends Controller
 
             //check if the submitted opt has been used
             //$check = verifiedotp::find('')
+
+    }
+
+
+    public function show_voting($position_id){
+        //pull the candidate for the first postion
+        //create id for each position
+
+        return view('evoting.vote');
+
+    }
+
+
+    public function president(){        
+
+                //find all candidate in that position
+                $president = President::all();
+                //$president = Student::all();
+
+                return view('evoting.vote')->with('presidents', $president);
+                
+
+              
 
     }
 

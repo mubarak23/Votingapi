@@ -43,6 +43,13 @@ Route::get('/submit_opt', 'evotingController@view_opt');
 
 Route::post('student_login', 'evotingController@verified_login');
 
+Route::get('voting', 'evotingController@show_voting');
+
+Route::get('vote', 'evotingController@president');
+
+Route::post('vote_pre', 'PresidentController@process_vote');
+
+
 
 
 

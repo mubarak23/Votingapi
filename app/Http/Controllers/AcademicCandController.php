@@ -34,6 +34,17 @@ class AcademicCandController extends Controller
     		return redirect()->route('home')->with('status', 'Unable to Add Sale Director');
 
     	}
+
     }
+
+
+
+
+
+
+
+
+
+    
 
 }
