@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVoteCountAsisSecGenTable extends Migration
+class CreateVoteCountSportDirsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateVoteCountAsisSecGenTable extends Migration
      */
     public function up()
     {
-        Schema::create('vote_count_asis_sec_gen', function (Blueprint $table) {
+        Schema::create('vote_count_sport_dirs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('students_id')->references('id')->on('students');
+             $table->integer('students_id')->references('id')->on('students');
             $table->string('student_fullname')->references('full_name')->on('students');
             $table->integer('vote');
-            $table->integer('candidate_id')->references('id')->on('asis_sec_gens');
+            $table->integer('candidate_id')->references('id')->on('sale_cands');
             $table->string('candidate_fullname')->references('full_name')->on('students');
             $table->date('vote_time');
             $table->integer('vote_status');
@@ -33,6 +33,6 @@ class CreateVoteCountAsisSecGenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vote_count_asis_sec_gen');
+        Schema::dropIfExists('vote_count_sport_dirs');
     }
 }

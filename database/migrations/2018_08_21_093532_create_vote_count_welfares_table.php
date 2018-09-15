@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVoteCountSaleCandTable extends Migration
+class CreateVoteCountWelfaresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVoteCountSaleCandTable extends Migration
      */
     public function up()
     {
-        Schema::create('vote_count_sale_cand', function (Blueprint $table) {
+        Schema::create('vote_count_welfares', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('students_id')->references('id')->on('students');
             $table->string('student_fullname')->references('full_name')->on('students');
@@ -33,6 +33,6 @@ class CreateVoteCountSaleCandTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vote_count_sale_cand');
+        Schema::dropIfExists('vote_count_welfares');
     }
 }

@@ -52,31 +52,35 @@
                               <a href="/contest_asis_sec/{{ $student->id }}"><button class="btn btn-primary">Asis Sec Gen</button></a>
                             </div>
                             <br><div>
-                              <a href="/"><button class="btn btn-primary">Fin Sec</button></a>
+                              <a href="{{ url('contest_fin_sec/{{$student->id}}') }}"><button class="btn btn-primary">Fin Sec</button></a>
                             </div>
                             <br>
                             <div>
-                              <a href="/"><button class="btn btn-primary">Vice Fin Sec</button></a>
+                              <a href="{{ url('contest_asist_fin_sec/{{$student->id}}') }}"><button class="btn btn-primary">Vice Fin Sec</button></a>
                             </div>
                             <br>
                             <div>
-                              <a href="/"><button class="btn btn-primary">Treasurer</button></a>
+                              <a href="{{ur('/contest_treasurer/{{ $student->id }}')}}"><button class="btn btn-primary">Treasurer</button></a>
                             </div>
                             <br>
                             <div>
-                              <a href="/"><button class="btn btn-primary">Academic Director</button></a>
+                              <a href="{{ur('/contest_welfare/{{ $student->id }}')}}"><button class="btn btn-primary">Welfare</button></a>
                             </div>
                             <br>
                             <div>
-                              <a href="/"><button class="btn btn-primary">Sale Director</button></a>
+                              <a href="{{ url('contest_academic/{{$student->id}}') }}"><button class="btn btn-primary">Academic Director</button></a>
                             </div>
                             <br>
                             <div>
-                              <a href="/"><button class="btn btn-primary">Sport Director</button></a>
+                              <a href="{{ url('contest_sales_dir/{{$student->id}}') }}"><button class="btn btn-primary">Sale Director</button></a>
                             </div>
                             <br>
                             <div>
-                              <a href="/"><button class="btn btn-primary">Social Dorector</button></a>
+                              <a href="{{ url('contest_sport_dir/{{$student->id}}') }}"><button class="btn btn-primary">Sport Director</button></a>
+                            </div>
+                            <br>
+                            <div>
+                              <a href="{{ url('contest_social_dir/{{$student->id}}') }}"><button class="btn btn-primary">Social Dorector</button></a>
                             </div>
 
                           </div>

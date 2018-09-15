@@ -17,6 +17,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}"> 
     
+     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
       

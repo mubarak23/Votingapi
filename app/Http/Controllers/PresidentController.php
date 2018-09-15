@@ -8,6 +8,7 @@ use App\President;
 use App\vote_count_president;
 use App\Student_vote;
 use Carbon\Carbon;
+use DB;
 
 class PresidentController extends Controller
 {
@@ -22,7 +23,12 @@ class PresidentController extends Controller
     	return $candidate;
 
     }
-
+     /**
+   * @method process contestant
+   * @var auth user
+   * @author  Mubarak Aminu <mubarakaminu340@gmail.com>
+   * @return status
+   */
 
     public function process_contest($id){
     		$student_details = Student::find($id);
@@ -31,27 +37,46 @@ class PresidentController extends Controller
     			'id' => $student_details->id,
                 'full_name' => $student_details->full_name
     				);
+            
+            try{
+            DB::beginTransaction();
 
-    		$contest = New President();
-    		$contest->students_id = $data['id'];
+            $contest = New President();
+            $contest->students_id = $data['id'];
             $contest->full_name = $data['full_name'];
-    		$contest->position = "president";
-    		$contest->vote_count = 0;
-    		$contest->save();
+            $contest->position = "president";
+            $contest->vote_count = 0;
+            
+            if($contest->save()){
+                $student->is_candidate = 1;
+                $student->save();
+                DB::commit();
+                return redirect()->route('home')->with('status', 'Contestant Added');
+            }else{
+                return back()->withInput()->with('status', 'Unable to process Contested');
+            }
+             
+            }catch(Exeception $e ){
 
-    		 return redirect()->route('home')->with('status', 'Contestant Added');
+                throw $e;
+                DB::rollback();
+            }
+	
     }
 
+     /**
+   * @method process vote
+   * @var auth user
+   * @author  Mubarak Aminu <mubarakaminu340@gmail.com>
+   * @return next voting position
+   */
 
     public function process_vote(Request $request){
 
             $data = $request->all();
             
-            //return $data;
-
-
-            //process vote count president first
-            //then process the student vote
+            try{
+                DB::beginTransaction();
             $vote_president = new vote_count_President();
 
             $vote_president->students_id = 1;   //get student id from the Auth function   
@@ -61,8 +86,7 @@ class PresidentController extends Controller
             $vote_president->candidate_name = $data['candidate_name'];
             $vote_president->vote_time = Carbon::now();
             $vote_president->vote_status = 1;
-
-            //if vote count is process successfull then
+             //if vote count is process successfull then
             if($vote_president->save()){
 
                 //process the student count
@@ -71,17 +95,26 @@ class PresidentController extends Controller
                 $student_vote->candidate_id = $data['candidate_id'];
                 $student_vote->candidate_name = $data['candidate_name'];
                 $student_vote->position = 'President';
-
                 $student_vote->save();
-
-                return 'Good At this Point';
-
-
+                $candidate_count = President::where('id', $data['candidate_id'])->select('vote_count')->first();
+                    $candidate_count->vote_count = $candidate_count->vote_count + 1;
+                    $candidate_count->save();
+                    DB::cmmit();
+                DB::commit();
+                return redirect()->route('vote/show_vp');
+                
             }else{
 
-                return 'Unauthorize Route';
+                return back()->withInput()->with('status', 'Unable to process Vote at this time');
             }
 
+
+            }catch(Exeception $e){
+                throw $e;
+                DB::rollback()
+            } 
+
+           
     }
 
 

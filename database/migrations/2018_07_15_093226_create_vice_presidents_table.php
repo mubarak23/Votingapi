@@ -16,6 +16,7 @@ class CreateVicePresidentsTable extends Migration
         Schema::create('vice_presidents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('students_id')->refrences('id')->on('students');
+            $table->string('full_name');
             $table->string('position');
             $table->integer('vote_count');
             $table->timestamps();

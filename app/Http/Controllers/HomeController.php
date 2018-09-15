@@ -29,6 +29,6 @@ class HomeController extends Controller
        // return $students;
 
 
-        return view('home')->with('students', $students);
+        return view('admin.admin-dashboard')->with('students', $students);
     }
 }

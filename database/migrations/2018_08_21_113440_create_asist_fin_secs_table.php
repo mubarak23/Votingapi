@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsisFinSecsTable extends Migration
+class CreateAsistFinSecsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAsisFinSecsTable extends Migration
      */
     public function up()
     {
-        Schema::create('asis_fin_secs', function (Blueprint $table) {
+        Schema::create('asist_fin_secs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('students_id')->references('id')->on('students');
             $table->string('position');
@@ -29,6 +29,6 @@ class CreateAsisFinSecsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asis_fin_secs');
+        Schema::dropIfExists('asist_fin_secs');
     }
 }

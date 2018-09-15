@@ -5,80 +5,59 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\President;
 use App\Student;
+use DB;
 
 
 class StudentController extends Controller
 {
-    //
-
-     public function allcandidate(){
-
-    	$candidate = President::find(1);
-
-    	$candidate->students;
-
-    	/*$candidate = $candidate->each(function ($candidate, $key) {
-  		  		$candidate->student;
-		});
-*/
-
-    	
-
-    	return $candidate;
-
-    }
-
-
+   
     public function add_student(){
 
-        return view('student.add');
+        return view('admin.add-student');
 
     }
 
-
+/**
+   * @method add student
+   * @var auth user
+   * @author  Mubarak Aminu <mubarakaminu340@gmail.com>
+   * @return status
+   */
     public function add(Request $request){
-          
-          if($request->isMethod('post')){
+              
+             $data = $request->all(); 
+            //set validation rules
+      $validatedData = $request->validate([
+            "full_name" => "required",
+            "reg_no" => "required",
+            "reg_no"   => "required",
+            "level"    => "required"   
+            ]);
 
-              //set validation rules
-            $this->validate($request, [
-                'full_name' => 'required|min:5',
-                'reg_no'    => 'required',
-                'programme' => 'required',
-                'level'     => 'required'
-                ]);
+          try{
+            DB::beginTreansaction();
+             $add_student = new Student();
+             $add_student->full_name = $data['full_name'];
+             $add_student->level = $data['level'];
+             $add_student->programme = $data['programme'];
+             $add_student->reg_no = $data['reg_no'];
+             $add_student->is_candidate = 0;
 
-
-            $data = $request->all();
-
-            //calling the new student model
-            $add_student = new Student();
-            $add_student->full_name = $data['full_name'];
-            $add_student->reg_no = $data['reg_no'];
-            $add_student->programme = $data['programme'];
-            $add_student->level = $data['level'];
-            $add_student->is_candidate = 0;
-
-            if($add_student->save()){
-              //back to admin home page with success message
-
+             if($add_student->save()){
+               DB::commit();
               return redirect()->route('home')->with('status', 'Student Added');
 
+             }else{
+              return back()->withInput()->with('status', 'Unable to Add Student At this time');
 
-            }else{
+             }
+           
 
-                return view('student.add');
+          }catch(Exception $e){
+              throw $e;
+              DB::rollback();
 
-            }
-
-          }else{
-
-            return view('student.add');
           }
-
-        
-
-
 
     }
 
